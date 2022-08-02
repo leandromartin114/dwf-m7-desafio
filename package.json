@@ -2,6 +2,7 @@
 	"name": "dwf-m7-desafio",
 	"version": "1.0.0",
 	"license": "MIT",
+	"browserslist": "> 0.5%, last 2 versions, not dead",
 	"engines": {
 		"node": "14.16.1",
 		"npm": "8.15.1"
