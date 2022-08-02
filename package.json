@@ -46,5 +46,8 @@
 		"process": "^0.11.10",
 		"querystring-es3": "^0.2.1",
 		"url": "^0.11.0"
+	},
+	"optionalDependencies": {
+		"fsevents": "2.1.2"
 	}
 }
