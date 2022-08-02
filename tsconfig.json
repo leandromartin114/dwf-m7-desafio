@@ -6,5 +6,6 @@
         "resolveJsonModule": true,
         "outDir": "be-dist",
     },
-    "includes": ["./be-src/**/*.ts","./fe-src/**/*.ts"]
+    "includes": ["be-src"],
+    "exclude": ["fe-src"]
 }
