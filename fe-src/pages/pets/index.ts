@@ -33,26 +33,24 @@ class MyPetsPage extends HTMLElement {
                     </div>
                     <div class="info__content">
                         <my-text tag="h4" class="info__location">${p.location}</my-text>
-                        <img src="${editURL}" alt="edit-image" class="edit__img" />
+                        <img src="${editURL}" alt="${p.id}" class="edit__img" />
                     </div>
                 </div>
                 `;
 				cardContainer.appendChild(card);
-				const editImg = card.querySelector(".edit__img");
-				const imgEl = card.querySelector("img");
-				const imgText: HTMLElement = card.querySelector("card__img-text");
-				if (p.state == "finded") {
-					imgText.style.display = "block";
-					imgText.style.position = "absolute";
-					imgText.style.color = "green";
+				const editImg: HTMLImageElement = card.querySelector(".edit__img");
+				let imgText: HTMLElement = card.querySelector(".card__img-text");
+				if (p.state == "LOST") {
+					imgText.style.color = "rgba(255, 0, 0, 0.425)";
 				}
-				if (p.state == "unpublish") {
-					imgText.style.display = "block";
-					imgText.style.position = "absolute";
-					imgText.style.color = "blue";
+				if (p.state == "FINDED") {
+					imgText.style.color = "rgba(7, 199, 23, 0.479)";
+				}
+				if (p.state == "UNPUBLISH") {
+					imgText.style.color = "rgba(0, 0, 255, 0.425)";
 				}
 				editImg.addEventListener("click", () => {
-					currentState.petId = imgEl.alt;
+					currentState.petId = editImg.alt;
 					state.setState(currentState);
 					Router.go("/edit");
 				});
@@ -121,10 +119,9 @@ class MyPetsPage extends HTMLElement {
 					position: relative;
 				}
 				.card__img-text{
-					font-size: 36px;
+					font-size: 30px;
 					font-weight: 700;
 					position: absolute;
-					color: rgba(0, 0, 0, 0.349);
 				}
 				.card__content{
 					width: 250px;

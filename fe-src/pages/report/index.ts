@@ -85,7 +85,7 @@ class ReportPage extends HTMLElement {
 		formReport.addEventListener("submit", (e: any) => {
 			e.preventDefault();
 			const data = e.target;
-			currentState.myPetData = {
+			currentState.petData = {
 				name: data.name.value,
 				description: data.description.value,
 				imgURL: imgURL,
@@ -189,7 +189,7 @@ class ReportPage extends HTMLElement {
                 }
                 .input{
                     box-sizing: border-box;
-                    font-size: 26px;
+                    font-size: 18px;
                     border: 3px solid rgb(128, 38, 212);
                     border-radius: 8px;
                     width: 100%;
@@ -232,7 +232,7 @@ class ReportPage extends HTMLElement {
 					margin-bottom: 15px;
 				}
                 .btn{
-                    font-size: 26px;
+                    font-size: 20px;
 					border-radius: 8px;
 					width: 100%;
 					padding: 5px 2px;
@@ -258,7 +258,7 @@ class ReportPage extends HTMLElement {
 				}
                 @media (min-width: 969px){
                     .input{
-                        font-size: 30px;
+                        font-size: 26px;
                         border-width: 4px;
                         padding: 7px 3px;
                     }
@@ -269,7 +269,7 @@ class ReportPage extends HTMLElement {
 						height: 450px;
 					}
                     .btn{
-                        font-size: 30px;
+                        font-size: 26px;
 						border-width: 4px;
 						padding: 7px 3px;
                     }

@@ -1,4 +1,3 @@
-import "dotenv/config";
 import { state } from "../../state";
 import { Router } from "@vaadin/router";
 
@@ -29,7 +28,7 @@ class HomePage extends HTMLElement {
 						const card = document.createElement("div");
 						card.classList.add("card");
 						card.innerHTML = `
-						<div class="card__img" style="background-image: url(${p.imgURL})">
+						<div class="card__img" tag="${p.id}" style="background-image: url(${p.imgURL})">
 							<p class="card__img-text">${p.state}</p>
 						</div>
 						<div class="card__content">
@@ -44,10 +43,20 @@ class HomePage extends HTMLElement {
 						</div>
 						`;
 						cardContainer.appendChild(card);
+						let imgText: HTMLElement = card.querySelector(".card__img-text");
+						if (p.state == "LOST") {
+							imgText.style.color = "rgba(255, 0, 0, 0.425)";
+						}
+						if (p.state == "FINDED") {
+							imgText.style.color = "rgba(7, 199, 23, 0.479)";
+						}
+						if (p.state == "UNPUBLISH") {
+							imgText.style.color = "rgba(0, 0, 255, 0.425)";
+						}
 						const infoReport = card.querySelector(".info__report");
-						const imgEl = card.querySelector("img");
+						const imgEl: any = card.querySelector(".card__img");
 						infoReport.addEventListener("click", () => {
-							currentState.petId = imgEl.alt;
+							currentState.petId = imgEl.tag;
 							state.setState(currentState);
 							Router.go("/info");
 						});
@@ -121,7 +130,7 @@ class HomePage extends HTMLElement {
 					position: relative;
 				}
 				.card__img-text{
-					font-size: 36px;
+					font-size: 34px;
 					font-weight: 700;
 					position: absolute;
 					color: rgba(0, 0, 0, 0.349);

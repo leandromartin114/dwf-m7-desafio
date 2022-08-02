@@ -38,6 +38,7 @@ class EditPage extends HTMLElement {
 		) as HTMLFormElement;
 		const previewContainer = this.shadow.querySelector(".dropzone-previews");
 		const picButton = this.shadow.querySelector(".green");
+		const picPet: HTMLElement = this.shadow.querySelector(".pic-pet");
 		const drop = document.createElement("div");
 		drop.innerHTML = `
                     <div class="template-preview">
@@ -62,6 +63,7 @@ class EditPage extends HTMLElement {
 		let imgURL;
 		myDropzone.on("thumbnail", function (file) {
 			imgURL = file.dataURL;
+			picPet.style.display = "none";
 		});
 		myDropzone.on("maxfilesexceeded", function (file) {
 			myDropzone.removeAllFiles();
@@ -85,7 +87,7 @@ class EditPage extends HTMLElement {
 		formReport.addEventListener("submit", (e: any) => {
 			e.preventDefault();
 			const data = e.target;
-			currentState.myPetData = {
+			currentState.petData = {
 				name: data.name.value,
 				description: data.description.value,
 				imgURL: imgURL,
@@ -112,16 +114,18 @@ class EditPage extends HTMLElement {
 		const formReport = this.shadow.querySelector(
 			".form-report"
 		) as HTMLFormElement;
-		// const img: HTMLImageElement = this.shadow.querySelector(".img");
+		const picPet: HTMLImageElement = this.shadow.querySelector(".pic-pet");
 		const formReportName: any = formReport.name;
 		const formReportDescription: any = formReport.description;
 		const formReportLocation: any = formReport.q;
 		currentState.myPets.find((p) => {
 			if (p.id == currentState.petId) {
+				currentState.petData = p;
+				state.setState(currentState);
 				formReportName.value = p.name;
 				formReportDescription.value = p.description;
 				formReportLocation.value = p.location;
-				// img.src = p.imgURL;
+				picPet.src = p.imgURL;
 			}
 		});
 		const map = this.initMap();
@@ -140,7 +144,7 @@ class EditPage extends HTMLElement {
 		const unpublishBtn = this.shadow.querySelector(".red");
 		const petName = currentState.petData.name;
 		findedBtn.addEventListener("click", () => {
-			currentState.myPetData.state = "finded";
+			currentState.petData.state = "FINDED";
 			state.setState(currentState);
 			state.updatePetData(() => {
 				Swal.fire({
@@ -153,7 +157,7 @@ class EditPage extends HTMLElement {
 			});
 		});
 		unpublishBtn.addEventListener("click", () => {
-			currentState.myPetData.state = "finded";
+			currentState.petData.state = "UNPUBLISH";
 			state.setState(currentState);
 			state.updatePetData(() => {
 				Swal.fire({
@@ -181,8 +185,10 @@ class EditPage extends HTMLElement {
                             <input class ="input" name="description" type="text">
                         </label>
                         <div class="pic-container">
-                            <div class="dropzone-previews"></div>
-                            <button type="button" class="btn green">Agregar foto</button> 
+                            <div class="dropzone-previews">
+								<img src="" class="pic-pet"/>
+							</div>
+							<button type="button" class="btn green">Agregar foto</button> 
                         </div>
                         <div class="map" style="width: 100%; height: 350px"></div>
                         <label>
@@ -225,7 +231,7 @@ class EditPage extends HTMLElement {
                 }
                 .input{
                     box-sizing: border-box;
-                    font-size: 26px;
+                    font-size: 18px;
                     border: 3px solid rgb(128, 38, 212);
                     border-radius: 8px;
                     width: 100%;
@@ -260,11 +266,17 @@ class EditPage extends HTMLElement {
                     height: 280px;
                     background-color: rgb(221, 218, 218);
                 }
+				.pic-pet{
+					width: 200px;
+                    height: 200px;
+                    background-color: rgb(221, 218, 218);
+					object-fit: cover;
+				}
 				.search{
 					margin-bottom: 15px;
 				}
                 .btn{
-                    font-size: 26px;
+                    font-size: 20px;
 					border-radius: 8px;
 					width: 100%;
 					padding: 5px 2px;
@@ -294,7 +306,7 @@ class EditPage extends HTMLElement {
 				}
                 @media (min-width: 969px){
                     .input{
-                        font-size: 30px;
+                        font-size: 26px;
                         border-width: 4px;
                         padding: 7px 3px;
                     }
@@ -302,7 +314,7 @@ class EditPage extends HTMLElement {
                         width: 430px;
                     }
                     .btn{
-                        font-size: 30px;
+                        font-size: 26px;
 						border-width: 4px;
 						padding: 7px 3px;
                     }

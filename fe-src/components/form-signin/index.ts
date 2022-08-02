@@ -46,7 +46,6 @@ class FormSignin extends HTMLElement {
                                 <my-text class="label" tag="p">PASSWORD</my-text>
                                 <input class ="input" name="text" type="password">
                             </label>
-                            <a>OLVIDÉ MI CONTRASEÑA</a>
                             <button class="button">Ingresar</button> 
                         </form>
                     `;
@@ -64,7 +63,7 @@ class FormSignin extends HTMLElement {
                     }
                     .input{
                         box-sizing: border-box;
-                        font-size: 26px;
+                        font-size: 18px;
                         border: 3px solid rgb(128, 38, 212);
                         border-radius: 8px;
                         width: 100%;
@@ -83,16 +82,8 @@ class FormSignin extends HTMLElement {
                     .input:hover{
                         background-color: #ede7f6;
                     }
-                    a{
-                        font-family: 'Odibee Sans', cursive;
-                        font-weight: 400;
-                        font-size: 18px;
-                        text-decoration: underline;
-                        color: blue;
-                        cursor: pointer;
-                    }
                     .button{
-                        font-size: 26px;
+                        font-size: 20px;
                         border-radius: 8px;
                         width: 100%;
                         padding: 5px 2px;
@@ -110,7 +101,7 @@ class FormSignin extends HTMLElement {
                     }
                     @media (min-width: 969px){
                         .input{
-                            font-size: 30px;
+                            font-size: 26px;
                             border-width: 4px;
                             padding: 7px 3px;
                         }
@@ -118,7 +109,7 @@ class FormSignin extends HTMLElement {
                             width: 350px;
                         }
                         .button{
-                            font-size: 30px;
+                            font-size: 26px;
                             border-width: 4px;
                             padding: 7px 3px;
                             cursor: pointer;

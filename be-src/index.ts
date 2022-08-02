@@ -129,6 +129,13 @@ app.post("/report/:id", async (req, res) => {
 	}
 });
 
+//listen
 app.listen(PORT, () => {
 	console.log("App listening on port " + PORT);
+});
+//serving front
+app.use(express.static("dist"));
+
+app.get("*", (req, res) => {
+	res.sendFile(__dirname + "/dist/index.html");
 });

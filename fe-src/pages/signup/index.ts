@@ -137,7 +137,7 @@ class SignupPage extends HTMLElement {
                         padding: 7px 3px;
                     }
                     .form-signup{
-                        width: 350px;
+                        width: 380px;
                     }
                     .button{
                         font-size: 30px;

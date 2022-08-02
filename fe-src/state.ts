@@ -202,7 +202,7 @@ export const state = {
 	reportLostPet(callback) {
 		const currentState = this.getState();
 		const token = currentState.token;
-		const petData = currentState.myPetData;
+		const petData = currentState.petData;
 		if (petData) {
 			fetch(API_BASE_URL + "/pet/new", {
 				method: "post",
@@ -217,7 +217,7 @@ export const state = {
 					location: petData.location,
 					lat: petData.lat,
 					lng: petData.lng,
-					state: "reported",
+					state: "LOST",
 					email: currentState.email,
 				}),
 			})
@@ -237,7 +237,7 @@ export const state = {
 		const currentState = this.getState();
 		const token = currentState.token;
 		const petId = currentState.petId;
-		const petData = currentState.myPetData;
+		const petData = currentState.petData;
 		if (petData) {
 			fetch(API_BASE_URL + "/pet/update/" + petId, {
 				method: "put",
@@ -252,8 +252,8 @@ export const state = {
 					location: petData.location,
 					lat: petData.lat,
 					lng: petData.lng,
-					state: "reported",
-					email: currentState.email,
+					state: petData.state,
+					email: petData.email,
 				}),
 			})
 				.then((res) => {
@@ -302,7 +302,10 @@ export const state = {
 					return res.json();
 				})
 				.then((data) => {
-					currentState.pets = data;
+					const result = data.filter((p) => {
+						return p.state == "FINDED" || p.state == "LOST";
+					});
+					currentState.pets = result;
 					this.setState(currentState);
 					callback();
 				});
