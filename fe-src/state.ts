@@ -1,6 +1,6 @@
 import "dotenv/config";
 const dev = process.env.NODE_ENV == "development";
-let API_BASE_URL = "http://localhost:3000";
+let API_BASE_URL = "https://dwf-m7-petfinder.herokuapp.com";
 if (dev) {
 	API_BASE_URL = "http://localhost:3000";
 }
