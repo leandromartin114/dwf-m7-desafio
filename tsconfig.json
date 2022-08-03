@@ -4,6 +4,8 @@
         "module": "CommonJS",
         "moduleResolution": "Node",
         "resolveJsonModule": true,
-        "experimentalDecorators": true
+        "experimentalDecorators": true,
+        "outDir": "be-dist"
     },
+    "includes": ["./be-src/**/*.ts"]
 }

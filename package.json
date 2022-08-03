@@ -14,7 +14,7 @@
 		"build:fe": "parcel build ./fe-src/index.html",
 		"build": "npm run build:be && npm run build:fe",
 		"sync": "ts-node ./be-src/sync.ts",
-		"start": "node ./be-src/index.js",
+		"start": "node ./be-dist/index.ts",
 		"test": "ava"
 	},
 	"dependencies": {
