@@ -1,5 +1,5 @@
 const dev = process.env.NODE_ENV == "development";
-let API_BASE_URL = "http://localhost:3000";
+let api = process.env.API_BASE_URL;
 // let API_BASE_URL = "https://dwf-m7-petfinder.herokuapp.com";
 // if (dev) {
 // 	API_BASE_URL = "http://localhost:3000";
@@ -69,7 +69,7 @@ export const state = {
 		const currentState = this.getState();
 		const email = currentState.email;
 		if (email) {
-			fetch(API_BASE_URL + "/auth", {
+			fetch(api + "/auth", {
 				method: "post",
 				headers: {
 					"content-type": "application/json",
@@ -97,7 +97,7 @@ export const state = {
 		const email = currentState.email;
 		const password = currentState.password;
 		if (fullName && email && password) {
-			fetch(API_BASE_URL + "/signup", {
+			fetch(api + "/signup", {
 				method: "post",
 				headers: {
 					"content-type": "application/json",
@@ -126,7 +126,7 @@ export const state = {
 		const email = currentState.email;
 		const password = currentState.password;
 		if (email && password) {
-			fetch(API_BASE_URL + "/auth/token", {
+			fetch(api + "/auth/token", {
 				method: "post",
 				headers: {
 					"content-type": "application/json",
@@ -153,7 +153,7 @@ export const state = {
 		const currentState = this.getState();
 		const token = currentState.token;
 		if (token) {
-			fetch(API_BASE_URL + "/user", {
+			fetch(api + "/user", {
 				method: "get",
 				headers: {
 					"content-type": "application/json",
@@ -179,7 +179,7 @@ export const state = {
 		const currentState = this.getState();
 		const token = currentState.token;
 		if (token) {
-			fetch(API_BASE_URL + "/user/update", {
+			fetch(api + "/user/update", {
 				method: "put",
 				headers: {
 					"content-type": "application/json",
@@ -204,7 +204,7 @@ export const state = {
 		const token = currentState.token;
 		const petData = currentState.petData;
 		if (petData) {
-			fetch(API_BASE_URL + "/pet/new", {
+			fetch(api + "/pet/new", {
 				method: "post",
 				headers: {
 					"content-type": "application/json",
@@ -239,7 +239,7 @@ export const state = {
 		const petId = currentState.petId;
 		const petData = currentState.petData;
 		if (petData) {
-			fetch(API_BASE_URL + "/pet/update/" + petId, {
+			fetch(api + "/pet/update/" + petId, {
 				method: "put",
 				headers: {
 					"content-type": "application/json",
@@ -272,7 +272,7 @@ export const state = {
 		const currentState = this.getState();
 		const token = currentState.token;
 		if (token) {
-			fetch(API_BASE_URL + "/pets", {
+			fetch(api + "/pets", {
 				method: "get",
 				headers: {
 					"content-type": "application/json",
@@ -297,7 +297,7 @@ export const state = {
 		const lat = currentState.lat;
 		const lng = currentState.lng;
 		if (lat && lng) {
-			fetch(API_BASE_URL + "/pets-near-by?lat=" + lat + "&lng=" + lng)
+			fetch(api + "/pets-near-by?lat=" + lat + "&lng=" + lng)
 				.then((res) => {
 					return res.json();
 				})
@@ -318,7 +318,7 @@ export const state = {
 		const petId = currentState.petId;
 		const petReportInfo = currentState.petReportInfo;
 		if (petId) {
-			fetch(API_BASE_URL + "/report/" + petId, {
+			fetch(api + "/report/" + petId, {
 				method: "post",
 				headers: {
 					"content-type": "application/json",
