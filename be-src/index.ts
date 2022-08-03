@@ -34,29 +34,33 @@ app.post("/auth", async (req, res) => {
 		try {
 			const existingUser = await findUser(req.body);
 			if (existingUser) {
-				res.status(200).json({ message: "ok" });
+				return res.status(200).json({ message: "ok" });
 			}
 		} catch (error) {
-			res.status(400).json(error);
+			return res.status(400).json(error);
 		}
 	}
 });
 //signup
 app.post("/signup", async (req, res) => {
 	if (!req.body) {
-		throw "There isn't body data";
+		return res.status(400).json("There isn't body data");
 	} else {
-		const user = await findOrCreateUser(req.body);
-		res.status(200).json(user);
+		try {
+			const user = await findOrCreateUser(req.body);
+			return res.status(200).json(user);
+		} catch (error) {
+			return res.status(400).json(error);
+		}
 	}
 });
 //signin
 app.post("/auth/token", async (req, res) => {
 	try {
 		const token = await generateToken(req.body);
-		res.status(200).json(token);
+		return res.status(200).json(token);
 	} catch (error) {
-		res.status(401).json("email or pass incorrect " + error);
+		return res.status(401).json("email or pass incorrect " + error);
 	}
 });
 //authorization midleware
