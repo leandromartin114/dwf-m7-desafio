@@ -59,6 +59,8 @@ export const state = {
 		this.setState(currentState);
 	},
 	setFullNameAndPass(fullName: string, password: string) {
+		console.log(this);
+
 		const currentState = this.getState();
 		currentState.fullName = fullName;
 		currentState.password = password;
@@ -79,9 +81,13 @@ export const state = {
 				}),
 			})
 				.then((res) => {
+					console.log(res);
+
 					return res.json();
 				})
 				.then((data) => {
+					console.log(data);
+
 					currentState.exist = data.message;
 					this.setState(currentState);
 					callback();
