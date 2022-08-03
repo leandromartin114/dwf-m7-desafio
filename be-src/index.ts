@@ -1,6 +1,7 @@
 import * as express from "express";
 import * as cors from "cors";
 import * as jwt from "jsonwebtoken";
+import "dotenv/config";
 import {
 	findOrCreateUser,
 	findUser,
