@@ -1,5 +1,5 @@
 import algoliasearch from "algoliasearch";
-import "dotenv/config";
+// import "dotenv/config";
 
 const client = algoliasearch(
 	process.env.ALGOLIA_CREDS_ID,
