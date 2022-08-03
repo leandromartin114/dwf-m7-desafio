@@ -15,6 +15,7 @@ import "./pages/report";
 import "./pages/edit";
 import "./pages/info";
 import "./pages/pets";
+import "dotenv/config";
 
 function main() {
 	state.initState();

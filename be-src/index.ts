@@ -21,7 +21,7 @@ import { createReport } from "./controllers/report-controller";
 const app = express();
 const PORT = process.env.PORT || 3000;
 const SECRET = "palabrasecreta68479282486";
-const staticDir = path.resolve("", "dist/index.html");
+const staticDir = path.resolve(__dirname + "/dist/index.html");
 
 app.use(express.json({ limit: "50mb" }));
 app.use(cors());
