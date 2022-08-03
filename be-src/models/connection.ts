@@ -1,5 +1,5 @@
-import { Sequelize } from "sequelize";
-
+// import { Sequelize } from "sequelize";
+const Sequelize = require("sequelize");
 export const sequelize = new Sequelize({
 	dialect: "postgres",
 	username: process.env.SEQUELIZE_CREDS_USERNAME,
