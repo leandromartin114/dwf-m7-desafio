@@ -143,9 +143,13 @@ export const state = {
 				}),
 			})
 				.then((res) => {
+					console.log(res);
+
 					return res.json();
 				})
 				.then((data) => {
+					console.log(data);
+
 					currentState.token = data;
 					this.setState(currentState);
 					callback();
