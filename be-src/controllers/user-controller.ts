@@ -4,8 +4,8 @@
 // import { User } from "../models";
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
-const Auth = require("../models");
-const User = require("../models");
+const Auth = require(__dirname + "/be-src/models");
+const User = require(__dirname + "/be-src/models");
 
 const SECRET = process.env.JWT_SECRET;
 

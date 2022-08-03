@@ -28,14 +28,15 @@ const {
 	generateToken,
 	getUserData,
 	updateUser,
-} = require("./controllers/user-controller");
+} = require(__dirname + "/be-src/controllers/user-controller");
 const {
 	createPet,
 	uptadePet,
 	getAllMyPets,
 	getPetsNearBy,
-} = require("./controllers/pet-controller");
-const createReport = require("./controllers/report-controller");
+} = require(__dirname + "/be-src/controllers/pet-controller");
+const createReport = require(__dirname +
+	"/be-src/controllers/report-controller");
 
 const app = express();
 const PORT = process.env.PORT || 3000;

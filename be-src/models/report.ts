@@ -2,7 +2,7 @@
 // import { sequelize } from "./connection";
 const Model = require("sequelize");
 const DataTypes = require("sequelize");
-const sequelize = require("./connection");
+const sequelize = require(__dirname + "/be-src/models/connection");
 
 export class Report extends Model {}
 
