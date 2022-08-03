@@ -1,9 +1,13 @@
-import * as crypto from "crypto";
-import * as jwt from "jsonwebtoken";
-import { Auth } from "../models";
-import { User } from "../models";
+// import * as crypto from "crypto";
+// import * as jwt from "jsonwebtoken";
+// import { Auth } from "../models";
+// import { User } from "../models";
+const crypto = require("crypto");
+const jwt = require("jsonwebtoken");
+const Auth = require("../models");
+const User = require("../models");
 
-const SECRET = "palabrasecreta68479282486";
+const SECRET = process.env.JWT_SECRET;
 
 //generate the encripted pass
 function getSHA256ofString(text) {

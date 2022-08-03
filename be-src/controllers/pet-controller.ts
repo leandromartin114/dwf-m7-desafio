@@ -1,6 +1,9 @@
-import { Pet } from "../models";
-import { index } from "../lib/algolia";
-import { cloudinary } from "../lib/cloudinary";
+// import { Pet } from "../models";
+// import { index } from "../lib/algolia";
+// import { cloudinary } from "../lib/cloudinary";
+const Pet = require("../models");
+const index = require("../lib/algolia");
+const cloudinary = require("../lib/cloudinary");
 
 function bodyToIndex(body, id) {
 	const result: any = {};
