@@ -21,7 +21,7 @@ import { createReport } from "./controllers/report-controller";
 const app = express();
 const PORT = process.env.PORT || 3000;
 const SECRET = process.env.JWT_SECRET;
-const staticDir = path.resolve(__dirname + "/dist/index.html");
+const staticDir = path.resolve(__dirname + "/dist");
 
 app.use(express.json({ limit: "50mb" }));
 app.use(cors());
@@ -137,8 +137,8 @@ app.listen(PORT, () => {
 	console.log("App listening on port " + PORT);
 });
 //serving front
-app.use(express.static("dist"));
+app.use(express.static(path.join(staticDir)));
 
 app.get("*", (req, res) => {
-	res.sendFile(staticDir);
+	res.sendFile(path.join(staticDir));
 });
