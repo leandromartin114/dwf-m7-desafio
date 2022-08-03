@@ -29,13 +29,11 @@ app.use(cors());
 //find user for signin
 app.post("/auth", async (req, res) => {
 	if (!req.body) {
-		throw "There isn't body data";
+		return res.status(400).json("There isn't body data");
 	} else {
 		try {
 			const existingUser = await findUser(req.body);
-			if (existingUser) {
-				return res.status(200).json({ message: "ok" });
-			}
+			return res.status(200).json(existingUser);
 		} catch (error) {
 			return res.status(400).json(error);
 		}
@@ -56,11 +54,15 @@ app.post("/signup", async (req, res) => {
 });
 //signin
 app.post("/auth/token", async (req, res) => {
-	try {
-		const token = await generateToken(req.body);
-		return res.status(200).json(token);
-	} catch (error) {
-		return res.status(401).json("email or pass incorrect " + error);
+	if (!req.body) {
+		return res.status(400).json("There isn't body data");
+	} else {
+		try {
+			const token = await generateToken(req.body);
+			return res.status(200).json(token);
+		} catch (error) {
+			return res.status(401).json("email or pass incorrect " + error);
+		}
 	}
 });
 //authorization midleware
