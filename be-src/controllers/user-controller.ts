@@ -12,15 +12,19 @@ function getSHA256ofString(text) {
 
 //find user by email
 export async function findUser(data) {
-	const userFinded = await User.findOne({
-		where: { email: data.email },
-	});
-	if (userFinded) {
+	try {
+		const userFinded = await User.findOne({
+			where: { email: data.email },
+		});
+		if (userFinded) {
+			return userFinded;
+		} else {
+			console.log("The user doesn't exist");
+		}
 		return userFinded;
-	} else {
-		console.log("The user doesn't exist");
+	} catch (error) {
+		return error;
 	}
-	return userFinded;
 }
 //create user and his auth element if it doesn't exist
 export async function findOrCreateUser(bodyData) {

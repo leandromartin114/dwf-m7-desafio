@@ -31,11 +31,13 @@ app.post("/auth", async (req, res) => {
 	if (!req.body) {
 		throw "There isn't body data";
 	} else {
-		const existingUser = await findUser(req.body);
-		if (existingUser) {
-			res.status(200).json({ message: "ok" });
-		} else {
-			res.status(400).json({ message: "The user doesn't exist" });
+		try {
+			const existingUser = await findUser(req.body);
+			if (existingUser) {
+				res.status(200).json({ message: "ok" });
+			}
+		} catch (error) {
+			res.status(400).json(error);
 		}
 	}
 });
