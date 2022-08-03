@@ -1,4 +1,5 @@
 import * as express from "express";
+import * as path from "path";
 import * as cors from "cors";
 import * as jwt from "jsonwebtoken";
 import "dotenv/config";
@@ -20,6 +21,7 @@ import { createReport } from "./controllers/report-controller";
 const app = express();
 const PORT = process.env.PORT || 3000;
 const SECRET = "palabrasecreta68479282486";
+const staticDir = path.resolve(__dirname + "/dist/index.html");
 
 app.use(express.json({ limit: "50mb" }));
 app.use(cors());
@@ -138,5 +140,5 @@ app.listen(PORT, () => {
 app.use(express.static("dist"));
 
 app.get("*", (req, res) => {
-	res.sendFile(__dirname + "/dist/index.html");
+	res.sendFile(staticDir);
 });
