@@ -1,6 +1,7 @@
 import * as express from "express";
 import * as path from "path";
 import * as cors from "cors";
+import * as bodyParser from "body-parser";
 import * as jwt from "jsonwebtoken";
 import "dotenv/config";
 import {
@@ -43,16 +44,20 @@ const PORT = process.env.PORT || 3000;
 const SECRET = process.env.JWT_SECRET;
 const staticDir = path.resolve(__dirname + "/dist/index.html");
 
-// app.use(express.json({ limit: "50mb" }));
 app.use(express.json());
+app.use(
+	bodyParser.json({
+		limit: "50mb",
+	})
+);
 app.use(cors());
 
 //find user for signin
 app.post("/auth", async (req, res) => {
 	const existingUser = await findUser(req.body).catch((error) => {
-		return res.status(400).json(error);
+		res.status(400).json(error);
 	});
-	return res.status(200).json(existingUser);
+	res.status(200).json(existingUser);
 });
 //signup
 app.post("/signup", async (req, res) => {
