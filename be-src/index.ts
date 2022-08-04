@@ -1,23 +1,3 @@
-import * as express from "express";
-import * as path from "path";
-import * as cors from "cors";
-import * as bodyParser from "body-parser";
-import * as jwt from "jsonwebtoken";
-import "dotenv/config";
-import {
-	findOrCreateUser,
-	findUser,
-	generateToken,
-	getUserData,
-	updateUser,
-} from "./controllers/user-controller";
-import {
-	createPet,
-	uptadePet,
-	getAllMyPets,
-	getPetsNearBy,
-} from "./controllers/pet-controller";
-import { createReport } from "./controllers/report-controller";
 // const express = require("express");
 // const path = require("path");
 // const cors = require("cors");
@@ -38,6 +18,26 @@ import { createReport } from "./controllers/report-controller";
 // } = require(__dirname + "/be-src/controllers/pet-controller");
 // const createReport = require(__dirname +
 // 	"/be-src/controllers/report-controller");
+import * as express from "express";
+import * as path from "path";
+import * as cors from "cors";
+import * as bodyParser from "body-parser";
+import * as jwt from "jsonwebtoken";
+import "dotenv/config";
+import {
+	findOrCreateUser,
+	findUser,
+	generateToken,
+	getUserData,
+	updateUser,
+} from "./controllers/user-controller";
+import {
+	createPet,
+	uptadePet,
+	getAllMyPets,
+	getPetsNearBy,
+} from "./controllers/pet-controller";
+import { createReport } from "./controllers/report-controller";
 
 const app = express();
 const PORT = process.env.PORT || 3000;

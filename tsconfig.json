@@ -1,20 +1,11 @@
 {
     "compilerOptions": {
-        "target": "ES6",
+        "target": "ESNext",
         "module": "CommonJS",
-        "moduleResolution": "node",
-        "lib": ["ES5", "ES6"],
-        "declaration": true,
-        "strict": true,
-        "esModuleInterop": true,
-        "allowJs": false,
-        "allowSyntheticDefaultImports": true,
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "strictPropertyInitialization": false,
-        "sourceMap": true,
+        "moduleResolution": "Node",
         "resolveJsonModule": true,
         "outDir": "be-dist"
     },
-    "includes": ["./be-src/**/*.ts"]
+    "includes": ["./be-src/**/*.ts"],
+    "exclude": ["fe-src"]
 }
