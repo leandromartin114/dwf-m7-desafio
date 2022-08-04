@@ -10,7 +10,7 @@
 	"scripts": {
 		"dev:be": "nodemon --watch \"./be-src/index.ts\" --ext \"ts\" --exec \"ts-node ./be-src/index.ts\"",
 		"dev:fe": "parcel serve ./fe-src/index.html",
-		"build:be": "tsc ./be-src",
+		"build:be": "tsc ./be-src/index.ts",
 		"build:fe": "parcel build ./fe-src/index.html",
 		"build": "yarn build:be && yarn build:fe",
 		"sync": "ts-node ./be-src/sync.ts",
