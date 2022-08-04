@@ -1,7 +1,7 @@
-// import { Report } from "../models/index";
-// import { sgMail } from "../lib/sendgrid";
-const Report = require(__dirname + "/be-src/models");
-const sgMail = require(__dirname + "/be-src/lib/sendgrid");
+import { Report } from "../models/index";
+import { sgMail } from "../lib/sendgrid";
+// const Report = require(__dirname + "/be-src/models");
+// const sgMail = require(__dirname + "/be-src/lib/sendgrid");
 
 export async function createReport(id: number, bodyData) {
 	const newReport = await Report.create({
