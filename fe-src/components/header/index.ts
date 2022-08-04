@@ -39,7 +39,10 @@ class MyHeader extends HTMLElement {
 		datosEl.addEventListener("click", () => {
 			currentState.link = "/mydata";
 			state.setState(currentState);
-			if (currentState.token) {
+			if (
+				currentState.token &&
+				currentState.token.includes("email or pass incorrect") == false
+			) {
 				Router.go("/mydata");
 				menuEl.style.display = "";
 			} else {
@@ -50,7 +53,10 @@ class MyHeader extends HTMLElement {
 		mascotasEl.addEventListener("click", () => {
 			currentState.link = "/pets";
 			state.setState(currentState);
-			if (currentState.token) {
+			if (
+				currentState.token &&
+				currentState.token.includes("email or pass incorrect") == false
+			) {
 				Router.go("/pets");
 				menuEl.style.display = "";
 			} else {
@@ -61,7 +67,10 @@ class MyHeader extends HTMLElement {
 		reportarEl.addEventListener("click", () => {
 			currentState.link = "/report";
 			state.setState(currentState);
-			if (currentState.token) {
+			if (
+				currentState.token &&
+				currentState.token.includes("email or pass incorrect") == false
+			) {
 				Router.go("/report");
 				menuEl.style.display = "";
 			} else {
@@ -72,7 +81,10 @@ class MyHeader extends HTMLElement {
 		datosB.addEventListener("click", () => {
 			currentState.link = "/mydata";
 			state.setState(currentState);
-			if (currentState.token) {
+			if (
+				currentState.token &&
+				currentState.token.includes("email or pass incorrect") == false
+			) {
 				Router.go("/mydata");
 				menuEl.style.display = "";
 			} else {
@@ -83,7 +95,10 @@ class MyHeader extends HTMLElement {
 		mascotasB.addEventListener("click", () => {
 			currentState.link = "/pets";
 			state.setState(currentState);
-			if (currentState.token) {
+			if (
+				currentState.token &&
+				currentState.token.includes("email or pass incorrect") == false
+			) {
 				Router.go("/pets");
 				menuEl.style.display = "";
 			} else {
@@ -94,7 +109,10 @@ class MyHeader extends HTMLElement {
 		reportarB.addEventListener("click", () => {
 			currentState.link = "/report";
 			state.setState(currentState);
-			if (currentState.token) {
+			if (
+				currentState.token &&
+				currentState.token.includes("email or pass incorrect") == false
+			) {
 				Router.go("/report");
 				menuEl.style.display = "";
 			} else {
@@ -104,7 +122,10 @@ class MyHeader extends HTMLElement {
 		});
 		const userEl = this.shadow.querySelector(".user-container");
 		const userElB = this.shadow.querySelector(".user-container-b");
-		if (currentState.token) {
+		if (
+			currentState.token &&
+			currentState.token.includes("email or pass incorrect") == false
+		) {
 			userEl.innerHTML = `
                         <my-text tag="h6">${currentState.email}</my-text>
                         <my-text tag="h5" class="close-session">cerrar sesión</my-text>

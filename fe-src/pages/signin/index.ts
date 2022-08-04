@@ -14,7 +14,7 @@ class SigninPage extends HTMLElement {
 		signinFormEl.addEventListener("send", (e: any) => {
 			const target = e.detail;
 			state.setEmail(target.text);
-			state.findUser(() => {
+			state.getUser(() => {
 				const currentState = state.getState();
 				if (currentState.exist == "ok") {
 					Router.go("/pass");

@@ -59,15 +59,13 @@ export const state = {
 		this.setState(currentState);
 	},
 	setFullNameAndPass(fullName: string, password: string) {
-		console.log(this);
-
 		const currentState = this.getState();
 		currentState.fullName = fullName;
 		currentState.password = password;
 		this.setState(currentState);
 	},
 	//find the email in an existing user for signin
-	findUser(callback) {
+	getUser(callback) {
 		const currentState = this.getState();
 		const email = currentState.email;
 		if (email) {
@@ -81,16 +79,16 @@ export const state = {
 				}),
 			})
 				.then((res) => {
-					console.log(res);
-
 					return res.json();
 				})
 				.then((data) => {
-					console.log(data);
-
-					currentState.exist = data.message;
-					this.setState(currentState);
-					callback();
+					if (data) {
+						currentState.exist = "ok";
+						this.setState(currentState);
+						callback();
+					} else {
+						console.error("No data from getUser");
+					}
 				});
 		} else {
 			console.error("There isn't data in state");
@@ -143,13 +141,9 @@ export const state = {
 				}),
 			})
 				.then((res) => {
-					console.log(res);
-
 					return res.json();
 				})
 				.then((data) => {
-					console.log(data);
-
 					currentState.token = data;
 					this.setState(currentState);
 					callback();
