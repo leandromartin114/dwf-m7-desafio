@@ -1,5 +1,5 @@
 import { sequelize } from "./models/connection";
-import "./models/index";
+import "./models";
 
 sequelize.sync({ alter: true }).then((res) => console.log(res));
 

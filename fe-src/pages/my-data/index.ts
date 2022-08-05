@@ -31,11 +31,19 @@ class MyDataPage extends HTMLElement {
 			const email = data.email.value;
 			const fullName = data.name.value;
 			const password = data.pass.value;
-			const dataToChange = {
-				email,
-				fullName,
-				password,
-			};
+			let dataToChange;
+			if (password) {
+				dataToChange = {
+					email,
+					fullName,
+					password,
+				};
+			} else {
+				dataToChange = {
+					email,
+					fullName,
+				};
+			}
 			state.updateUserData(dataToChange, () => {
 				Swal.fire({
 					title: "Datos modificados",
