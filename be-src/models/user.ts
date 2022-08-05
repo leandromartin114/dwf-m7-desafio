@@ -15,12 +15,3 @@ export const User = sequelize.define("user", {
 // 	},
 // 	{ sequelize, modelName: "user" }
 // );
-
-// const Model = require("sequelize");
-// const DataTypes = require("sequelize");
-// const sequelize = require(__dirname + "/be-src/models/connection");
-
-// export const User = sequelize.define("user", {
-// 	fullName: DataTypes.STRING,
-// 	email: DataTypes.STRING,
-// });

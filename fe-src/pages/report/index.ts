@@ -1,7 +1,6 @@
 import "dotenv/config";
 import { state } from "../../state";
 import Dropzone from "dropzone";
-// import "mapbox-gl/dist/mapbox-gl.css";
 import * as mapboxgl from "mapbox-gl";
 import Swal from "sweetalert2";
 import { Router } from "@vaadin/router";

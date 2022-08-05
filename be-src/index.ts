@@ -1,23 +1,3 @@
-// const express = require("express");
-// const path = require("path");
-// const cors = require("cors");
-// const jwt = require("jsonwebtoken");
-// require("dotenv/config");
-// const {
-// 	findOrCreateUser,
-// 	findUser,
-// 	generateToken,
-// 	getUserData,
-// 	updateUser,
-// } = require(__dirname + "/be-src/controllers/user-controller");
-// const {
-// 	createPet,
-// 	uptadePet,
-// 	getAllMyPets,
-// 	getPetsNearBy,
-// } = require(__dirname + "/be-src/controllers/pet-controller");
-// const createReport = require(__dirname +
-// 	"/be-src/controllers/report-controller");
 import * as express from "express";
 import * as path from "path";
 import * as cors from "cors";

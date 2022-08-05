@@ -146,6 +146,7 @@ class MyPetsPage extends HTMLElement {
 					margin-left: 10px;
 					width: 30px;
 					height: 30px;
+					cursor: pointer;
 				}
                 `;
 		this.shadow.appendChild(div);

@@ -1,8 +1,5 @@
 import { Model, DataTypes } from "sequelize";
 import { sequelize } from "./connection";
-// const Model = require("sequelize");
-// const DataTypes = require("sequelize");
-// const sequelize = require(__dirname + "/be-src/models/connection");
 
 export const Pet = sequelize.define("pet", {
 	name: DataTypes.STRING,

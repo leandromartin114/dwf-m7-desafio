@@ -1,5 +1,4 @@
 import { Sequelize } from "sequelize";
-// const Sequelize = require("sequelize");
 
 export const sequelize = new Sequelize({
 	dialect: "postgres",
