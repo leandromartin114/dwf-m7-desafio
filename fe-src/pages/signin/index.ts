@@ -16,8 +16,6 @@ class SigninPage extends HTMLElement {
 			state.setEmail(target.text);
 			state.getUser(() => {
 				const currentState = state.getState();
-				console.log(currentState);
-
 				if (currentState.exist == "Yes") {
 					Router.go("/pass");
 				} else {
