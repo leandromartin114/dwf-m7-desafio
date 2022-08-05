@@ -4,13 +4,19 @@ import { sequelize } from "./connection";
 // const DataTypes = require("sequelize");
 // const sequelize = require(__dirname + "/be-src/models/connection");
 
-export class Auth extends Model {}
+export const Auth = sequelize.define("auth", {
+	email: DataTypes.STRING,
+	password: DataTypes.STRING,
+	userId: DataTypes.INTEGER,
+});
 
-Auth.init(
-	{
-		email: DataTypes.STRING,
-		password: DataTypes.STRING,
-		userId: DataTypes.INTEGER,
-	},
-	{ sequelize, modelName: "auth" }
-);
+// export class Auth extends Model {}
+
+// Auth.init(
+// 	{
+// 		email: DataTypes.STRING,
+// 		password: DataTypes.STRING,
+// 		userId: DataTypes.INTEGER,
+// 	},
+// 	{ sequelize, modelName: "auth" }
+// );

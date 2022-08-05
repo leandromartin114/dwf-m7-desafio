@@ -4,19 +4,30 @@ import { sequelize } from "./connection";
 // const DataTypes = require("sequelize");
 // const sequelize = require(__dirname + "/be-src/models/connection");
 
-export class Pet extends Model {}
+export const Pet = sequelize.define("pet", {
+	name: DataTypes.STRING,
+	description: DataTypes.STRING,
+	imgURL: DataTypes.STRING,
+	location: DataTypes.STRING,
+	lat: DataTypes.FLOAT,
+	lng: DataTypes.FLOAT,
+	state: DataTypes.STRING,
+	email: DataTypes.STRING,
+	userId: DataTypes.INTEGER,
+});
+// export class Pet extends Model {}
 
-Pet.init(
-	{
-		name: DataTypes.STRING,
-		description: DataTypes.STRING,
-		imgURL: DataTypes.STRING,
-		location: DataTypes.STRING,
-		lat: DataTypes.FLOAT,
-		lng: DataTypes.FLOAT,
-		state: DataTypes.STRING,
-		email: DataTypes.STRING,
-		userId: DataTypes.INTEGER,
-	},
-	{ sequelize, modelName: "pet" }
-);
+// Pet.init(
+// 	{
+// 		name: DataTypes.STRING,
+// 		description: DataTypes.STRING,
+// 		imgURL: DataTypes.STRING,
+// 		location: DataTypes.STRING,
+// 		lat: DataTypes.FLOAT,
+// 		lng: DataTypes.FLOAT,
+// 		state: DataTypes.STRING,
+// 		email: DataTypes.STRING,
+// 		userId: DataTypes.INTEGER,
+// 	},
+// 	{ sequelize, modelName: "pet" }
+// );
