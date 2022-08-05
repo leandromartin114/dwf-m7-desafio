@@ -1,3 +1,4 @@
+// let API_BASE_URL = "http://localhost:3000";
 let API_BASE_URL = process.env.API_BASE_URL;
 
 export const state = {
@@ -80,7 +81,7 @@ export const state = {
 				})
 				.then((data) => {
 					if (data) {
-						currentState.exist = "ok";
+						currentState.exist = data;
 						this.setState(currentState);
 						callback();
 					} else {
@@ -226,7 +227,6 @@ export const state = {
 					return res.json();
 				})
 				.then((data) => {
-					console.log(data);
 					callback();
 				});
 		} else {
@@ -261,7 +261,6 @@ export const state = {
 					return res.json();
 				})
 				.then((data) => {
-					console.log(data);
 					callback();
 				});
 		} else {

@@ -28,7 +28,7 @@ class HomePage extends HTMLElement {
 						const card = document.createElement("div");
 						card.classList.add("card");
 						card.innerHTML = `
-						<div class="card__img" tag="${p.id}" style="background-image: url(${p.imgURL})">
+						<div class="card__img" tag="${p.objectID}" style="background-image: url(${p.imgURL})">
 							<p class="card__img-text">${p.state}</p>
 						</div>
 						<div class="card__content">
@@ -39,6 +39,7 @@ class HomePage extends HTMLElement {
 							<div class="info__content">
 								<my-text tag="h4" class="info__location">${p.location}</my-text>
 								<my-text tag="h5" class="info__report">REPORTAR INFORMACIÓN</my-text>
+								<img src="" alt="${p.objectID}" class="pet-id" />
 							</div>
 						</div>
 						`;
@@ -54,9 +55,9 @@ class HomePage extends HTMLElement {
 							imgText.style.color = "rgba(0, 0, 255, 0.425)";
 						}
 						const infoReport = card.querySelector(".info__report");
-						const imgEl: any = card.querySelector(".card__img");
+						const img: any = card.querySelector(".pet-id");
 						infoReport.addEventListener("click", () => {
-							currentState.petId = imgEl.tag;
+							currentState.petId = img.alt;
 							state.setState(currentState);
 							Router.go("/info");
 						});
@@ -150,6 +151,9 @@ class HomePage extends HTMLElement {
 					display: grid;
 					align-items: center;
 					justify-items: center;
+				}
+				.pet-id{
+					display: none;
 				}
                 `;
 		this.shadow.appendChild(div);

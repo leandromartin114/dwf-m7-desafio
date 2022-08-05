@@ -16,7 +16,11 @@ export async function findUser(data) {
 		const userFinded = await User.findOne({
 			where: { email: data.email },
 		});
-		return userFinded;
+		if (userFinded) {
+			return "Yes";
+		} else {
+			return "No";
+		}
 	} catch (error) {
 		console.log(error);
 	}

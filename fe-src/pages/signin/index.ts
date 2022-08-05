@@ -16,7 +16,9 @@ class SigninPage extends HTMLElement {
 			state.setEmail(target.text);
 			state.getUser(() => {
 				const currentState = state.getState();
-				if (currentState.exist == "ok") {
+				console.log(currentState);
+
+				if (currentState.exist == "Yes") {
 					Router.go("/pass");
 				} else {
 					Swal.fire({
