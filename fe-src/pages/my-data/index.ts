@@ -32,7 +32,7 @@ class MyDataPage extends HTMLElement {
 			const fullName = data.name.value;
 			const password = data.pass.value;
 			let dataToChange;
-			if (password) {
+			if (password !== "") {
 				dataToChange = {
 					email,
 					fullName,
