@@ -35,59 +35,62 @@ function bodyToIndex(body, id) {
 }
 //create a new pet to report
 export async function createPet(userId: number, petData) {
-	// let image;
-	// if (petData.imgURL) {
-	const image = await cloudinary.uploader.upload(petData.imgURL, {
-		resource_type: "image",
-		discard_original_filename: true,
-		width: 1000,
-	});
-	const newPetReported = await Pet.create({
-		name: petData.name,
-		description: petData.description,
-		imgURL: image.secure_url,
-		location: petData.location,
-		lat: petData.lat,
-		lng: petData.lng,
-		state: petData.state,
-		email: petData.email,
-		userId: userId,
-	});
-	const petDataForIndex = {
-		name: petData.name,
-		description: petData.description,
-		imgURL: image.secure_url,
-		location: petData.location,
-		lat: petData.lat,
-		lng: petData.lng,
-		state: petData.state,
-		email: petData.email,
-	};
-	const indexFormatted = bodyToIndex(petDataForIndex, newPetReported.get("id"));
-	const newIndex = await index.saveObject(indexFormatted);
-	return newPetReported;
-	// } else {
-	// const newPetReported = await Pet.create({
-	// 	name: petData.name,
-	// 	description: petData.description,
-	// 	imgURL: "img",
-	// 	location: petData.location,
-	// 	lat: petData.lat,
-	// 	lng: petData.lng,
-	// 	state: petData.state,
-	// 	email: petData.email,
-	// 	userId: userId,
-	// });
-	// const indexFormatted = bodyToIndex(petData, newPetReported.get("id"));
-	// const newIndex = await index.saveObject(indexFormatted);
-	// return newPetReported;
-	// }
+	let image;
+	if (petData.imgURL) {
+		image = await cloudinary.uploader.upload(petData.imgURL, {
+			resource_type: "image",
+			discard_original_filename: true,
+			width: 500,
+		});
+		const newPetReported = await Pet.create({
+			name: petData.name,
+			description: petData.description,
+			imgURL: image.secure_url,
+			location: petData.location,
+			lat: petData.lat,
+			lng: petData.lng,
+			state: petData.state,
+			email: petData.email,
+			userId: userId,
+		});
+		const petDataForIndex = {
+			name: petData.name,
+			description: petData.description,
+			imgURL: image.secure_url,
+			location: petData.location,
+			lat: petData.lat,
+			lng: petData.lng,
+			state: petData.state,
+			email: petData.email,
+		};
+		const indexFormatted = bodyToIndex(
+			petDataForIndex,
+			newPetReported.get("id")
+		);
+		const newIndex = await index.saveObject(indexFormatted);
+		return newPetReported;
+	} else {
+		const newPetReported = await Pet.create({
+			name: petData.name,
+			description: petData.description,
+			imgURL: "img",
+			location: petData.location,
+			lat: petData.lat,
+			lng: petData.lng,
+			state: petData.state,
+			email: petData.email,
+			userId: userId,
+		});
+		const indexFormatted = bodyToIndex(petData, newPetReported.get("id"));
+		const newIndex = await index.saveObject(indexFormatted);
+		return newPetReported;
+	}
 }
 //update an existing pet
 export async function uptadePet(petId: number, petData) {
 	let image;
 	if (petData.imgURL) {
-		const image = await cloudinary.uploader.upload(petData.imgURL, {
+		image = await cloudinary.uploader.upload(petData.imgURL, {
 			resource_type: "image",
 			discard_original_filename: true,
 			width: 1000,
