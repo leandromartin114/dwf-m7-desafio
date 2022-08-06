@@ -205,6 +205,8 @@ export const state = {
 		const currentState = this.getState();
 		const token = currentState.token;
 		const petData = currentState.petData;
+		console.log(petData);
+
 		if (petData) {
 			fetch(API_BASE_URL + "/pet/new", {
 				method: "post",
@@ -224,9 +226,12 @@ export const state = {
 				}),
 			})
 				.then((res) => {
+					console.log(res);
 					return res.json();
 				})
 				.then((data) => {
+					console.log(data);
+
 					callback();
 				});
 		} else {
