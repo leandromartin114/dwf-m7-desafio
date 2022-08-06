@@ -20,7 +20,7 @@ class MyText extends HTMLElement {
 		style.innerHTML = `
                 h1{
 					margin: 0;
-                    font-size: 32px;
+                    font-size: 31px;
                     font-weight: 700;
                     text-align: center;
                 }

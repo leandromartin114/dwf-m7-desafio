@@ -174,10 +174,10 @@ class MyHeader extends HTMLElement {
 		style.innerHTML = `
         .container{
             width: 100%;
-            padding: 10px 30px;
             margin: 0;
             font-family: "Poppins", sans-serif;
             display: flex;
+            box-sizing: border-box;
         }
         .header {
             width: 100%;
