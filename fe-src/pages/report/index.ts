@@ -162,6 +162,7 @@ class ReportPage extends HTMLElement {
 		div.classList.add("content");
 		style.innerHTML = `
                 .content{
+					box-sizing: border-box;
                     padding: 0 20px 20px 20px;
                     width: 100%;
                     display: flex;
