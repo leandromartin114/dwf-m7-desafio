@@ -112,18 +112,18 @@ class ReportPage extends HTMLElement {
 			const firstResult = results[0];
 			const marker = new mapboxgl.Marker({
 				draggable: true,
-				pitchAlignment: map,
+				pitchAlignment: "map",
 				overflow: "hidden",
-				anchor: "bottom",
+				anchor: "center",
 			})
 				.setLngLat(firstResult.geometry.coordinates)
-				.addTo(map);
+				.addTo(map)
+				.setOffset([0, 1]);
 			const [lng, lat] = firstResult.geometry.coordinates;
 			this.lat = lat;
 			this.lng = lng;
 			map.setCenter(firstResult.geometry.coordinates);
 			map.setZoom(14);
-			console.log(firstResult.geometry.coordinates);
 		});
 		const cancelBtn = this.shadow.querySelector(".grey");
 		cancelBtn.addEventListener("click", () => {
@@ -158,6 +158,12 @@ class ReportPage extends HTMLElement {
                         <button type="submit" class="btn submit">Reportar mascota</button> 
                         <button type="button" class="btn grey">Cancelar</button> 
                     </form>
+					<script src="https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.js"></script>
+					<script src="//unpkg.com/mapbox@1.0.0-beta9/dist/mapbox-sdk.min.js"></script>
+					<link
+						href="https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.css"
+						rel="stylesheet"
+					/>
                 `;
 		div.classList.add("content");
 		style.innerHTML = `
@@ -256,6 +262,12 @@ class ReportPage extends HTMLElement {
 					background-color: rgb(179, 140, 216);
 					border: 3px solid rgb(128, 38, 212);
 				}
+				mapboxgl-marker {
+					position: absolute;
+					top: 0;
+					left: 0;
+					transform: translate(-50%, -50%) translate(14px, 334px);
+				}
                 @media (min-width: 969px){
                     .input{
                         font-size: 26px;
@@ -276,7 +288,9 @@ class ReportPage extends HTMLElement {
 					.dropzone-previews{
 						width: 350px;
 						height: 350px;
+					}
                 }
+				
                 `;
 		this.shadow.appendChild(div);
 		this.shadow.appendChild(style);

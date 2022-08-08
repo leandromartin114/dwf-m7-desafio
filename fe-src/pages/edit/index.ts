@@ -1,7 +1,6 @@
 import "dotenv/config";
 import { state } from "../../state";
 import Dropzone from "dropzone";
-import "mapbox-gl/dist/mapbox-gl.css";
 import * as mapboxgl from "mapbox-gl";
 import Swal from "sweetalert2";
 import { Router } from "@vaadin/router";
@@ -201,6 +200,12 @@ class EditPage extends HTMLElement {
                         <button type="button" class="btn normal find">Reportar como encontrado</button> 
                         <button type="button" class="btn red">Despublicar</button> 
                     </form>
+					<script src="https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.js"></script>
+					<script src="//unpkg.com/mapbox@1.0.0-beta9/dist/mapbox-sdk.min.js"></script>
+					<link
+						href="https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.css"
+						rel="stylesheet"
+					/>
                 `;
 		div.classList.add("content");
 		style.innerHTML = `
