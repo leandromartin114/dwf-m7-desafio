@@ -17,7 +17,7 @@ class PassPage extends HTMLElement {
 			state.signinAndGetToken(() => {
 				const currentState = state.getState();
 				if (
-					currentState.token.includes("email or pass incorrect") ||
+					currentState.token.includes("invalid password") ||
 					currentState.token == ""
 				) {
 					Swal.fire({

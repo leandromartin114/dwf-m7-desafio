@@ -60,8 +60,13 @@ export async function generateToken(bodyData) {
 				password: passwordHash,
 			},
 		});
-		const token = jwt.sign({ id: auth.get("userId") }, SECRET);
-		return token;
+		if (auth) {
+			const token = jwt.sign({ id: auth.get("userId") }, SECRET);
+			return token;
+		} else {
+			const token = "invalid password";
+			return token;
+		}
 	} catch (error) {
 		console.log(error);
 	}
